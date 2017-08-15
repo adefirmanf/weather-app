@@ -1,9 +1,11 @@
 language: node_js
 node_js:
   - "7"
-before_script:
+before_install:
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
   - sleep 3 # give xvfb some time to start
-script :
+install :
   - "node node_modules/phantomjs-prebuilt/install.js"
+script : 
+  - "npm run unit && npm run e2e"
