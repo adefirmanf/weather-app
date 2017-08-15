@@ -21,6 +21,8 @@ ratings:
   - "**.php"
   - "**.py"
   - "**.rb"
+  - "**.vue"
+
 exclude_paths:
 - config/
 - node_modules/
