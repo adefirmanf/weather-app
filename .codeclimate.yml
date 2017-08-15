@@ -1,13 +1,27 @@
-eslint:
-  enabled: true
-  config:
-    extensions:
-    - .es6
-    - .js
-    - .jsx
-
+---
+engines:
+  duplication:
+    enabled: true
+    config:
+      languages:
+      - ruby
+      - javascript
+      - python
+      - php
+  eslint:
+    enabled: true
+  fixme:
+    enabled: true
 ratings:
-   paths:
-   - "**.es6"
-   - "**.js"
-   - "**.jsx"
+  paths:
+  - "**.inc"
+  - "**.js"
+  - "**.jsx"
+  - "**.module"
+  - "**.php"
+  - "**.py"
+  - "**.rb"
+exclude_paths:
+- config/
+- node_modules/
+- test/
