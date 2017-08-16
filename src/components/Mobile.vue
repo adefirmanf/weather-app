@@ -4,7 +4,10 @@
       <div class="background"></div>
       <div class="content">
           <div class="screen-area">
-           <!--  <h4> Hello world </h4> -->      <starry-sky></starry-sky>
+           <div class="screen-title">25&#176;C</div>
+           Jakarta, Indonesia</br>
+           <v-ons-icon icon="ion-ios-cloud-outline"></v-ons-icon> Sky clear
+           <starry-sky></starry-sky>
           </div>
           <footer>
             <div class="image-svg">
@@ -28,8 +31,12 @@
     z-index: -1 
   }
   .screen-area{
+    text-align: center;
     padding : 100px;
     color : white;
+  }
+  .screen-title{
+    font-size : 48px;
   }
   footer{
     z-index: -1;
