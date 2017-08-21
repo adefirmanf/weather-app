@@ -4,9 +4,13 @@
       <div class="background"></div>
       <div class="content">
           <div class="screen-area">
-           <div class="screen-title">25&#176;C</div>
-           Jakarta, Indonesia</br>
-           <v-ons-icon icon="ion-ios-cloud-outline"></v-ons-icon> Sky clear
+           <div v-if="$ons.platform.isAndroid()">
+             <div class="screen-title">{{message}}&#176;C</div>
+             Jakarta, Indonesia</br>
+          </div>
+          <div v-else>
+            You are running in browser version. <br>Please running application via Android / iOS
+          </div>
            <starry-sky></starry-sky>
           </div>
           <footer>
@@ -23,12 +27,19 @@
   </template>
 <style scoped>
   .background{
-  background: #141E30;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to top, rgba(36, 59, 85, 90%), #141E30);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to top, rgba(36, 59, 85, 92%), #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background-color: #141E30;
+  background-image: linear-gradient(bottom, #243b55 50%, #141E30 100%);
+  background-image: -ms-linear-gradient(bottom, #243b55 50%, #141E30 90%);
+  background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(0,#243b55),
+    color-stop(0.70, #141E30)
+    );
   }
   .image-svg{
-    z-index: -1 
+    z-index: -1;
   }
   .screen-area{
     text-align: center;
@@ -48,19 +59,21 @@
     left: 0;
     text-align: center;
   }
-
 </style>
 
 <script>
+/* eslint-disable */
 import Earth1 from '@/components/Earth1';
 import Tree1 from '@/components/Tree';
 import Wolf from '@/components/Wolf';
 import Moon from '@/components/Moon';
 import Particles from '@/components/Particles';
-
+import Request from 'request'
+// import Connection from '@/cordova/config';
 export default {
   data() {
     return {
+      message : ''
     };
   },
   components: {
@@ -70,7 +83,18 @@ export default {
     'moon-sky': Moon,
     'starry-sky': Particles,
   },
-};
+  created (){
+    this.GetTemperature()
+  },
+  methods : {
+    GetTemperature(){
+      var UpdatedMessage = this
+      Request('http://api.openweathermap.org/data/2.5/find?q=Jakarta&units=metric&appid=37fb76524a5e32930e1380a8adb5f5b0', function(err, response, body){
+        return UpdatedMessage.message = JSON.parse(body).list[0].main.temp
+        })
+      }
+    }
+  };
 </script>
 </body>
 </html>
