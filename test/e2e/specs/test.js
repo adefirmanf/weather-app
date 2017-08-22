@@ -10,7 +10,7 @@ module.exports = {
     const prodServer = browser.globals.prodServerURL;
 
     browser
-      .url(devServer)
+      .url(prodServer)
       .waitForElementVisible('#app', 5000)
       .assert.elementPresent('background')
       .end();
