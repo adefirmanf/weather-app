@@ -6,7 +6,11 @@
           <div class="screen-area">
            <div v-if="$ons.platform.isAndroid()">
              <div class="screen-title">{{message}}&#176;C</div>
+             <div id="DeviceReady"></div>
              Jakarta, Indonesia</br>
+             <div class="gps" id="DeviceGPSReady">
+             </div>
+             <v-ons-button id="RefreshButton">Refresh</v-ons-button>
           </div>
           <div v-else>
             You are running in browser version. <br>Please running application via Android / iOS
@@ -40,6 +44,12 @@
   }
   .image-svg{
     z-index: -1;
+  }
+  .gps{
+    padding: 100px;
+  }
+  .footer-text{
+    position: absolute;
   }
   .screen-area{
     text-align: center;

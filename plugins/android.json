@@ -12,7 +12,20 @@
         },
         "cordova-plugin-network-information": {
             "PACKAGE_NAME": "org.apache.cordova.weatherElement"
+        },
+        "cordova-plugin-geolocation": {
+            "PACKAGE_NAME": "org.apache.cordova.weatherElement"
+        },
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "org.apache.cordova.weatherElement"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "org.apache.cordova.weatherElement"
         }
     },
-    "dependent_plugins": {}
+    "dependent_plugins": {
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "org.apache.cordova.weatherElement"
+        }
+    }
 }
