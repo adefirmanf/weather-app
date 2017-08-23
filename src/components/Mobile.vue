@@ -5,9 +5,9 @@
       <div class="content">
           <div class="screen-area">
            <div v-if="$ons.platform.isAndroid()">
-             <div class="screen-title">{{message}}&#176;C</div>
+             <div class="screen-title" id="temperature"></div>
              <div id="DeviceReady"></div>
-             Jakarta, Indonesia</br>
+             <div id="area"></div></br>
              <div class="gps" id="DeviceGPSReady">
              </div>
              <v-ons-button id="RefreshButton">Refresh</v-ons-button>
@@ -94,15 +94,15 @@ export default {
     'starry-sky': Particles,
   },
   created (){
-    this.GetTemperature()
+    // this.GetTemperature()
   },
   methods : {
-    GetTemperature(){
-      var UpdatedMessage = this
-      Request('http://api.openweathermap.org/data/2.5/find?q=Jakarta&units=metric&appid=37fb76524a5e32930e1380a8adb5f5b0', function(err, response, body){
-        return UpdatedMessage.message = JSON.parse(body).list[0].main.temp
-        })
-      }
+    // GetTemperature(){
+    //   var UpdatedMessage = this
+    //   Request('http://api.openweathermap.org/data/2.5/find?q=Jakarta&units=metric&appid=37fb76524a5e32930e1380a8adb5f5b0', function(err, response, body){
+    //     return UpdatedMessage.message = JSON.parse(body).list[0].main.temp
+    //     })
+    //   }
     }
   };
 </script>

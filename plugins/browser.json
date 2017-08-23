@@ -21,10 +21,16 @@
         },
         "cordova-plugin-device": {
             "PACKAGE_NAME": "org.apache.cordova.weatherElement"
+        },
+        "cordova-plugin-http": {
+            "PACKAGE_NAME": "org.apache.cordova.weatherElement"
         }
     },
     "dependent_plugins": {
         "cordova-plugin-compat": {
+            "PACKAGE_NAME": "org.apache.cordova.weatherElement"
+        },
+        "cordova-plugin-file": {
             "PACKAGE_NAME": "org.apache.cordova.weatherElement"
         }
     }

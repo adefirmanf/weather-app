@@ -17,6 +17,7 @@
  * under the License.
  */
 var app = {
+
     // Application Constructor
     initialize: function() {
         document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
@@ -30,6 +31,7 @@ var app = {
         this.receivedEvent('deviceready');
         document.addEventListener('offline', this.onOffline, false);
         document.addEventListener('online', this.onOnline, false);
+        document.getElementById("RefreshButton").addEventListener("click", this.Refresh.bind(this), false);
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
@@ -38,16 +40,20 @@ var app = {
     onOffline: function(){
         document.getElementById('DeviceReady').innerHTML = "Checking connection...";
     },
-    getLocation: function(){
-        alert("It should be running");
-    },
-    onMapSuccess: function(position){
-        alert("Success")
-        document.getElementById('DeviceGPSReady').innerHTML = position.coords.latitude;
-    },
-    onMapError: function(error){
-        alert("Error")
-        document.getElementById('DeviceGPSReady').innerHTML = "Please check your GPS";
+    Refresh: function (){
+            var options = {
+              maximumAge: 3600000,
+              timeout: 100000,
+              enableHighAccuracy: true,
+           }
+            var watchID = navigator.geolocation.getCurrentPosition(onSuccess, onError, options);
+               function onSuccess(position) {
+                  alert('Latitude: '       + position.coords.latitude)
+                  document.getElementById('DeviceGPSReady').innerHTML = position.coords.latitude;
+               };
+               function onError(error) {
+                   alert("Error" + error.message)
+               };
     }
 };
 

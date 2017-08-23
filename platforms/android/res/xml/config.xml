@@ -13,6 +13,14 @@
     <feature name="Device">
         <param name="android-package" value="org.apache.cordova.device.Device" />
     </feature>
+    <feature name="File">
+        <param name="android-package" value="org.apache.cordova.file.FileUtils" />
+        <param name="onload" value="true" />
+    </feature>
+    <allow-navigation href="cdvfile:*" />
+    <feature name="CordovaHttpPlugin">
+        <param name="android-package" value="com.synconset.CordovaHttpPlugin" />
+    </feature>
     <name>WeatherElement2</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.
